@@ -1,5 +1,4 @@
-﻿using Assisticant;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Clock
 {

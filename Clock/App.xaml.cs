@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Assisticant;
+using System;
 using System.Windows;
 
 namespace Clock
@@ -13,5 +9,25 @@ namespace Clock
     /// </summary>
     public partial class App : Application
     {
+        ObservableClock _model;
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+
+            if (_model == null)
+            {
+                _model = new ObservableClock();
+                var viewModel = new TimeDisplay(_model);
+                MainWindow.DataContext = ForView.Wrap(viewModel);
+            }
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _model.Dispose();
+
+            base.OnExit(e);
+        }
     }
 }

@@ -22,7 +22,7 @@ class ObservableClock
 }
 ```
 
-Start a timer that peridically set the value of the observable.
+Start a timer that periodically set the value of the observable.
 
 ```csharp
 class ObservableClock
